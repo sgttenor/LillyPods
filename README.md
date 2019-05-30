@@ -5,18 +5,12 @@ LillyPod app
 This app will provide access to favorite podcasts by allowing the user to choose from a provided list by type, genre, language,
 and length.
 
-The user will get a list of available choices and they will be able to choose specific podcasts to add/delete their podcast list to listen to later.
+The user will get a list of available choices and they will be able to choose specific podcasts to add/delete their podcast playlist to listen later.
 
 
-Starting page should have your playlist available or ask to add
-
-
-
-
-
-
-
-
+Starting page should have your playlist available or ask to search/add from a dropdown-list of available options or allow them to search.
+Once choices are made, request from query will show up. You should be able to check which ones you would like to add. 
+Make the submission and choices will be added to playlist.
 
 
 
