@@ -22,7 +22,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.get("/songs", async function(req, res) {
+app.get("/list", async function(req, res) {
   const response = await unirest
   .get(
       'https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=1')
