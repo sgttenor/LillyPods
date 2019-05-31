@@ -14,4 +14,4 @@ Make the submission and choices will be added to playlist.
 
 
 
-Project will developed by Ashlie, Erin, Isidro, Marco
+Project developed by Ashlie, Erin, Isidro, Marco
