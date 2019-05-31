@@ -2,6 +2,12 @@
   line-height: 2.5;
 }
 
-h1 {
-  text-align: center;
+.slick-img {
+  width: 200px;
+  height: 200px;
+}
+
+.your-class {
+  width: 60vw;
+  margin: auto
 }
