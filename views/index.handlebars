@@ -8,8 +8,8 @@
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/lib/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="lib/slick/slick.css" />
-  <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/slick/slick-theme.css" />
   <link rel="stylesheet" href="/styles/styles.css">
 
   <title>LilyPods</title>
@@ -53,15 +53,14 @@
       <div><img class="slick-img" src="/images/podcast5.jpg"></div>
     </div>
     <br>
-    <a class="btn btn-primary btn-lg" href="/playlist" role="button">Create Playlist</a>
+    <a class="btn btn-primary btn-lg" href="/api/podcasts" role="button">Search Game of Thrones</a>
+    <a class="btn btn-primary btn-lg" href="/podcasts" role="button">Create Playlist</a>
     </p>
   </div>
 
   <footer id="footer">Team IMEA | Copyright 2019</footer>
 
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="lib/slick/slick.min.js"></script>
+  <script type="text/javascript" src="/lib/slick/slick.min.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function () {
@@ -99,68 +98,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{!-- <div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-
-        <h2>Search a podcast!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Podcast name</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-              placeholder="Enter podcast name">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description"
-              placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Search</button>
-        </form>
-        <h3>Star Wars Podcasts:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each podcasts}}
-          <li data-id="{{did}}" class="list-group-item">
-            <p>Podcast Id: {{id}}</p>
-            <p>Podcast Audio: {{audio}}</p>
-            <p>Podcast Title: {{title}}</p>
-            <p>Podcast Image_url: {{imageurl}}</p>
-             <img src={{imageurl}} alt="image" height="200" width="200"> 
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
-
-<script>
-
-    $.get("/podcasts").then(function (res){
-     console.log("respuesta  ",res);
-
-
-     console.log("datas",res);
-        //console.log("data",res.results[0].title_original);
-
-        //render (crear oobjetores.render(objeto (id,audio)))
-    })
-</script>

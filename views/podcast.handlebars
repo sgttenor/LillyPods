@@ -1,11 +1,135 @@
 <!-- 5. Output the animalType string, pet boolean and fierceness number to the page for all the animals. -->
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>Podcasts found</h1>
-<ul>
-  {{#each podcasts}}
-    <li>
-      <p>Podcasts id: {{id}}</p>
-      <p>Audio podcast: {{audio}}</p>
-    </li>
-  {{/each}}
-</ul>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/lib/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/lib/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/slick/slick-theme.css" />
+  <link rel="stylesheet" href="/styles/styles.css">
+
+  <title>LilyPods</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">LilyPods</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Playlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <img src="https://i.imgur.com/Tq6DSll.jpg" class="rounded" height=70px width=85px>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <h1 class="display-3">LilyPods</h1>
+    <p class="lead">Easily manage your podcast playlist.</p>
+    <hr class="my-4">
+    <div class="your-class">
+       {{#each podcasts}}
+      <div><img class="slick-img" src={{imageurl}}></div>
+       {{/each}}
+      {{!-- <div><img class="slick-img" src="/images/podcast2.jpg"></div>
+      <div><img class="slick-img" src="/images/podcast3.jpg"></div>
+      <div><img class="slick-img" src="/images/podcast4.jpg"></div>
+      <div><img class="slick-img" src="/images/podcast5.jpg"></div> --}}
+    </div>
+    <br>
+    <a class="btn btn-primary btn-lg" href="/playlist" role="button">Create Playlist</a>
+    </p>
+  </div>
+
+
+  <div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+
+        <h2>Search Podcasts</h2>
+        <br>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <input type="text" id="podcast-search" class="form-control" aria-describedby="example-text"
+              placeholder="Search by name, author, or genre...">
+          </div>
+          {{!-- <button id="submit" href="/api/podcasts/kittens" class="btn btn-primary float-right">Search</button> --}}
+          <a class="btn btn-primary btn-lg" href="/api/podcasts" role="button">Search</a>
+        </form>
+        <h3>{{name}} Podcasts:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each podcasts}}
+          <li data-id="{{did}}" class="list-group-item">
+            <p>Podcast Id: {{id}}</p>
+            <p>Podcast Audio: {{audio}}</p>
+            <p>Podcast Title: {{title}}</p>
+            <p>Podcast Image_url: {{imageurl}}</p>
+             <img src={{imageurl}} alt="image" height="200" width="200"> 
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer id="footer">Team IMEA | Copyright 2019</footer>
+  <script type="text/javascript" src="/lib/slick/slick.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.your-class').slick({
+        centerMode: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: true,
+        slidesToShow: 3,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+
+    });
+
+  </script>
+</body>
+
+</html>

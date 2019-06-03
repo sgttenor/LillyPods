@@ -68,17 +68,19 @@ module.exports = function (app) {
   });
 
   // Get podcasts
-  app.get("/podcasts", async function (req, res) {
+  app.get("/podcasts/:search?", async function (req, res) {
+    const search = req.params.search || "star wars";
     const response = await unirest
       .get(
-        'https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=1')
+        'https://listen-api.listennotes.com/api/v2/search?q=' + search + '&sort_by_date=1')
       .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
     /*    console.log("resultados : ", response);
         res.render("index", response);  */
     var results = response.toJSON().body.results;
     /* console.log("resultados: ", results) */
     var data = {
-      podcasts: []
+      podcasts: [],
+      name: search
     };
 
     for (var i = 0; i < results.length; i++) {
@@ -95,7 +97,7 @@ module.exports = function (app) {
       {results: response.toJSON().body.results
       }
       console.log("nuestro objeto: ", obj) */;
-    res.render("index", data);
+    res.render("podcast", data);
     /*    res = data;
        return; */
 
@@ -107,13 +109,15 @@ module.exports = function (app) {
 
 
   app.get("/api/podcasts/:search?", async function (req, res) {
-    const search = req.params.search || "star wars";
+    var userSearch = "#podcast-search";
+    console.log(userSearch);
+    const search = req.params.search || "game of thrones";
     const response = await unirest
       .get(
         'https://listen-api.listennotes.com/api/v2/search?q=' + search + '&sort_by_date=1')
       .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
-    /*    console.log("resultados : ", response);
-       res.render("index", response);  */
+    // console.log("resultados : ", response);
+    //    res.render("index", response);
     var results = response.toJSON().body.results;
     /* console.log("resultados: ", results) */
     var data = {
@@ -134,7 +138,7 @@ module.exports = function (app) {
     {results: response.toJSON().body.results
     }
     console.log("nuestro objeto: ", obj) */;
-    res.json(data);
+    res.render("podcast", data);
     /*    res = data;
      return; */
 
