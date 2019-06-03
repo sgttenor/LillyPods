@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
-    "database": "exampledb",
+    "password": "",
+    "database": "lillypods_db",
     "host": "localhost",
     "dialect": "mysql"
   },

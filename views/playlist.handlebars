@@ -41,61 +41,33 @@
       <img src="https://i.imgur.com/Tq6DSll.jpg" class="rounded" height=70px width=85px>
     </div>
   </nav>
-  <div class="jumbotron">
-    <h1 class="display-3">LilyPods</h1>
-    <p class="lead">Easily manage your podcast playlist.</p>
-    <hr class="my-4">
-    <div class="your-class">
-      <div><img class="slick-img" src="/images/podcast1.jpg"></div>
-      <div><img class="slick-img" src="/images/podcast2.jpg"></div>
-      <div><img class="slick-img" src="/images/podcast3.jpg"></div>
-      <div><img class="slick-img" src="/images/podcast4.jpg"></div>
-      <div><img class="slick-img" src="/images/podcast5.jpg"></div>
+
+<div id="playlist">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{msg}}</h1>
+        <h2>LilyPods Playlists</h2>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="manage-playlist">Search Podcasts</label>
+            <input type="text" id="playlist-text" class="form-control" aria-describedby="playlist-text" placeholder="Search podcast by title, genre, or author">
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        {{!-- <h3>Examples:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each examples}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul> --}}
+      </div>
     </div>
-    <br>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Create Playlist</a>
-    </p>
   </div>
+</div>
 
-  <footer id="footer">Team IMEA | Copyright 2019</footer>
-
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="lib/slick/slick.min.js"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('.your-class').slick({
-        centerMode: true,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        dots: true,
-        slidesToShow: 3,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 3
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 1
-            }
-          }
-        ]
-      });
-
-    });
-
-  </script>
-</body>
-
-</html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
