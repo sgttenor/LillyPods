@@ -8,8 +8,8 @@
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/lib/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="lib/slick/slick.css" />
-  <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/slick/slick-theme.css" />
   <link rel="stylesheet" href="/styles/styles.css">
 
   <title>LilyPods</title>
@@ -53,7 +53,8 @@
       <div><img class="slick-img" src="/images/podcast5.jpg"></div>
     </div>
     <br>
-    <a class="btn btn-primary btn-lg" href="/playlist" role="button">Create Playlist</a>
+    <a class="btn btn-primary btn-lg" href="/api/podcasts" role="button">Search Game of Thrones</a>
+    <a class="btn btn-primary btn-lg" href="/podcasts" role="button">Create Playlist</a>
     </p>
   </div>
 
@@ -61,11 +62,7 @@
 
   <footer id="footer">Team IMEA | Copyright 2019</footer>
 
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="lib/slick/slick.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="/js/index.js"></script>
+  <script type="text/javascript" src="/lib/slick/slick.min.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function () {
@@ -98,22 +95,6 @@
       });
 
     });
-
-
-
-
-
-  //  <script>
-  //    $.get("/podcasts").then(function (res){
-  //      console.log("respuesta  ", res);
-
-
-//     console.log("datas",res);
-  //       //console.log("data",res.results[0].title_original);
- 
-         //render (crear oobjetores.render(objeto (id,audio)))
-    // })
-  // </script>
 
   </script>
 </body>
