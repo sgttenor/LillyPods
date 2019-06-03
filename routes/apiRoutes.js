@@ -41,26 +41,61 @@ module.exports = function(app) {
       }
     }
   });
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  //post Podcast query
+  app.post("/", function(req, res) {
+    db.Podcast.findAll({}).then(function(dbPodcast) {
+      res.json(dbPodcast).req.body.audio;
     });
   });
+  
+ 
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/podcasts", function(req, res) {
+    db.Podcast.create(req.body).then(function(dbPodcast) {
+      res.json(dbPodcast);
+      console.log(results.listennotes_url);
+      console.log(results.description_original);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
+  app.delete("/api/podcasts/:id", function(req, res) {
+    db.Podcast.destroy({ where: { id: req.params.id } }).then(function(
+      dbPodcast
     ) {
-      res.json(dbExample);
+      res.json(dbPodcast);
     });
   });
 };
+
+// Get podcasts
+app.get("/podcasts", async function (req, res) {
+  const response = await unirest
+    .get(
+      'https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=1')
+    .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
+/*    console.log("resultados : ", response);
+   res.render("index", response);  */
+   var results = response.toJSON().body.results;
+   /* console.log("resultados: ", results) */
+      var data = {
+       podcasts : []
+      };
+
+   for (var i=0; i < results.length; i++){
+    var currentPodcast = results[i];
+    data.podcasts.push({
+      id :      currentPodcast.id, 
+      audio :   currentPodcast.audio, 
+      title :   currentPodcast.podcast_title_original,
+      imageurl :currentPodcast.image})
+   };
+   console.log("objeto data :",data);
+  /*  var obj =
+    {results: response.toJSON().body.results
+    }
+    console.log("nuestro objeto: ", obj) */;
+  res.render("index",data);
+/*    res = data;
+ return; */
