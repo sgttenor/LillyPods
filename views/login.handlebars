@@ -1,9 +1,36 @@
-<div class="container">
-  <h1>Login!</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">LilyPods</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Playlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <img src="https://i.imgur.com/Tq6DSll.jpg" class="rounded" height=70px width=85px>
+    </div>
+  </nav>
+<br>
+
+<div class="container">
+  <h1>Login</h1>
+  <br>
   <form>
     <div class="form-group">
-      <label>email</label>
+      <label>Email</label>
       <input class="form-control" id="email" type="text">
     </div>
     <div class="form-group">
@@ -11,7 +38,10 @@
       <input class="form-control" id="password" type="password">
     </div>
 
-    <button id="login" class="btn btn-primary">Login!</button>
+    <button id="login" class="btn btn-primary">Login</button>
+    <br>
+    <br>
+    <p>Need to sign up? <a href="/signup">Sign up</a></p>
   </form>
 
   <script src="js/login.js"></script>
