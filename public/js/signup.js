@@ -8,5 +8,6 @@ $("#signup").on("click", function(e) {
 
   $.post("/api/signup", userData).then(function(data){
     console.log(data);
+    alert(data.message);
   })
 });
