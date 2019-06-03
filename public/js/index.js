@@ -1,34 +1,11 @@
+
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
@@ -59,9 +36,35 @@ var refreshExamples = function() {
   });
 };
 
+// The API object contains methods for each kind of request we'll make
+ var API = {
+  saveExample: function(example) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/examples",
+      data: JSON.stringify(example)
+    });
+  },
+  getExamples: function() {
+    return $.ajax({
+      url: "api/examples",
+      type: "GET"
+    });
+  },
+  deleteExample: function(id) {
+    return $.ajax({
+      url: "api/examples/" + id,
+      type: "DELETE"
+    });
+  }
+}; 
+
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
@@ -80,6 +83,16 @@ var handleFormSubmit = function(event) {
 
   $exampleText.val("");
   $exampleDescription.val("");
+}; 
+
+
+var handleFormSubmit = function(event) {
+  event.preventDefault();
+
+  API.saveExample().then(function() {
+    refreshExamples();
+  });
+
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -95,5 +108,8 @@ var handleDeleteBtnClick = function() {
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
+/* $submitBtn.on("click", handleFormSubmit); */
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+
+$submitBtn.on("click", handleFormSubmit);

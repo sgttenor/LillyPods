@@ -3,14 +3,18 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
+    console.log("get html routes : ",req.user);
     if(req.user){
+      console.log("hay usuario ", req.user);
       return res.render("index");
     }
 
+    console.log("NO hay usuario ", req.user);
     res.render("signup");
   });
 
   app.get("/login", function(req, res) {
+    console.log("login : ",req.user);
     if(req.user){
       return res.redirect("/");
     }
@@ -32,3 +36,4 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+
