@@ -78,19 +78,19 @@
           <h3>{{name}} Podcasts:</h3>
           <ul id="example-list" class="list-group">
             {{#each podcasts}}
-            <button id="play-list">
+          
               <li data-id="{{did}}" class="list-group-item">
                 <p>Podcast Id: {{id}}</p>
-                <a href="">
-                  <p>Podcast Audio: {{audio}}</p>
+                <a href="{{audio}}" target="_blank">
+                  <p>Click on link to listen to audio</p>
                 </a>
                 <p>Podcast Title: {{title}}</p>
                 <p>Podcast Image_url: {{imageurl}}</p>
                 <img src={{imageurl}} alt="image" height="200" width="200">
-                <button class="btn btn-danger float-right delete">ｘ</button>
+                <button class="btn btn-danger float-right delete" id="delete">ｘ</button>
               </li>
               {{/each}}
-            </button>
+         
           </ul>
         </div>
       </div>
@@ -131,17 +131,9 @@
       });
 
     });
-    $("#play-list").click(function (req, res) {
-      $.get("/playlist", function (req, res) {
-        var data = {
-          podcasts: [{ search }]
-        };
+  
 
-        console.log("podcast" + data);
-
-      });
-      window.location.href = "/playlist";
-    });
+  
   </script>
 </body>
 
