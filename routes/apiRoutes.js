@@ -123,7 +123,7 @@ module.exports = function (app) {
     var data = {
       podcasts: []
     };
-
+     
     for (var i = 0; i < results.length; i++) {
       var currentPodcast = results[i];
       data.podcasts.push({
@@ -139,6 +139,7 @@ module.exports = function (app) {
     }
     console.log("nuestro objeto: ", obj) */;
     res.render("podcast", data);
+    window.location.href = "/podcasts";
     /*    res = data;
      return; */
 
@@ -146,5 +147,22 @@ module.exports = function (app) {
         results: response.toJSON().body.results
       }); */
   });
+  app.get('/playlist', async function(req, res) {
+    /* console.log("resultados: ", results) */
+    const response = await unirest
+    .get(
+      'https://listen-api.listennotes.com/api/v2/search?q=' + '&sort_by_date=1')
+    .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
+  // console.log("resultados : ", response);
+  //    res.render("index", response);
+  var results = response.toJSON().body.results;
+  /* console.log("resultados: ", results) */
+  var data = {
+    podcasts: []
+  };
+    
+    res.render("podcast", data);
+    });
+ 
 
 };

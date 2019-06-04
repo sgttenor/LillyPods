@@ -3,6 +3,7 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 const unirest = require("unirest");
 var session = require("express-session");
+var bodyParser = require('body-parser'); 
 
 var http = require("http");
 
@@ -20,6 +21,7 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
 
 // Handlebars
 app.engine(
