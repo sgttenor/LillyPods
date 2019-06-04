@@ -79,12 +79,13 @@
         <ul id="example-list" class="list-group">
           {{#each podcasts}}
           <li data-id="{{did}}" class="list-group-item">
-            <p>Podcast Id: {{id}}</p>
+            <p id="podId">Podcast Id: {{id}}</p>
             <p>Podcast Audio: {{audio}}</p>
             <p>Podcast Title: {{title}}</p>
             <p>Podcast Image_url: {{imageurl}}</p>
              <img src={{imageurl}} alt="image" height="200" width="200"> 
-            <button class="btn btn-danger float-right delete">ｘ</button>
+            <button class="btn btn-danger float-right delete">X</button>
+            <button type="button" class="btn btn-success float-right">Add</button>
           </li>
           {{/each}}
         </ul>
