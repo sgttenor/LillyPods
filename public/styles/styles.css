@@ -21,3 +21,22 @@
 #frog {
   margin-right: 500px;
 }
+
+.title {
+  text-align: center;
+  font-size: 2em;
+  
+}
+
+.header,h6 {
+  text-align: center;
+}
+
+.image{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  
+}
