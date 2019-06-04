@@ -23,10 +23,10 @@ module.exports = function(app) {
   })
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.get("/podcast/:id", function(req, res) {
+    db.dbPodcast.findOne({ where: { id: req.params.id } }).then(function(dbPodcast) {
       res.render("example", {
-        example: dbExample
+        podcast: dbPodcast
       });
     });
   });
