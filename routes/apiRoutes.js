@@ -60,8 +60,8 @@ module.exports = function (app) {
 
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (
-      dbExample
+    data.podcasts.destroy({ where: { id: req.params.id } }).then(function (
+      Po
     ) {
       res.json(dbExample);
     });
@@ -163,6 +163,8 @@ module.exports = function (app) {
     
     res.render("podcast", data);
     });
+
+    
  
 
 };
