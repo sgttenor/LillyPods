@@ -42,7 +42,8 @@
     </div>
   </nav>
   <div class="jumbotron">
-    <h1 class="display-3">LilyPods <img src="https://i.imgur.com/Tq6DSll.jpg" class="rounded" id="frog" height=90px width=105px></h1>
+    <h1 class="display-3">LilyPods <img src="https://i.imgur.com/Tq6DSll.jpg" class="rounded" id="frog" height=90px
+        width=105px></h1>
     <p class="lead">Easily manage your podcast playlist.</p>
     <hr class="my-4">
     <div class="your-class">
@@ -73,24 +74,24 @@
                 placeholder="Search by name, author, or genre...">
             </div>
             {{!-- <button id="submit" href="/api/podcasts/kittens" class="btn btn-primary float-right">Search</button> --}}
-            <a class="btn btn-primary btn-lg" href="/podcasts" role="button">Search</a>
+            <a class="btn btn-primary btn-lg" id="searchButton" role="button">Search</a>
           </form>
           <h3>{{name}} Podcasts:</h3>
           <ul id="example-list" class="list-group">
             {{#each podcasts}}
-          
-              <li data-id="{{did}}" class="list-group-item">
-                <p>Podcast Id: {{id}}</p>
-                <a href="{{audio}}" target="_blank">
-                  <p>Click on link to listen to audio</p>
-                </a>
-                <p>Podcast Title: {{title}}</p>
-                <p>Podcast Image_url: {{imageurl}}</p>
-                <img src={{imageurl}} alt="image" height="200" width="200">
-                <button class="btn btn-danger float-right delete" id="delete">ｘ</button>
-              </li>
-              {{/each}}
-         
+            <li data-id="{{did}}" class="list-group-item">
+              <p class="title">Podcast Title: <h1 class="header">{{title}}></h1>
+              </p>
+              <img src={{imageurl}} alt="image" height="200" width="150" class="image">
+              <button class="btn btn-danger float-right delete" id="delete">ｘ</button>
+              <br><br>
+              <a href="{{audio}}" target="_blank">
+                <h6>
+                  <p>Click to listen to audio</p>
+                </h6>
+              </a>
+            </li>
+            {{/each}}
           </ul>
         </div>
       </div>
@@ -101,7 +102,15 @@
   <script type="text/javascript" src="/lib/slick/slick.min.js"></script>
 
   <script type="text/javascript">
+
+
+
     $(document).ready(function () {
+
+      $("#searchButton").on("click", function () {
+        window.location.replace("/api/podcasts/" + $("#podcast-search").val().trim());
+      });
+
       $('.your-class').slick({
         centerMode: true,
         autoplay: true,
@@ -130,10 +139,7 @@
         ]
       });
 
-    });
-  
-
-  
+    }); 
   </script>
 </body>
 

@@ -47,19 +47,28 @@
       <div class="row">
         <div class="col-8 offset-2">
           <h1>{{msg}}</h1>
-          <h2>LilyPods Playlists</h2> 
+          <h2>LilyPods Playlists</h2>
 
-           <ul id="example-list" class="list-group">
-            {{#each playlistC}}
-             <li data-id="{{did}}" class="list-group-item">
-                <p>Podcast Id: {{id}}</p>
-                <p>Podcast Audio: {{audio}}</p>
-                <p>Podcast Title: {{title}}</p>
-                <p>Podcast Image_url: {{imageurl}}</p>
-                <img src={{imageurl}} alt="image" height="200" width="200">
-                <button class="btn btn-danger float-right delete" height="10" width="10">ｘ</button>
-              </li>  
-            {{/each}}
+          {{#each podcasts}}
+
+
+
+          <h1>{{title}}</h1>
+          <h2>{{id}}</h2>
+          <img src="{{imageurl}}">
+
+          {{#each podcasts}}
+
+          <h1>{{title}}</h1>
+          <h2>{{id}}</h2>
+          <img src="{{imageurl}}">
+          <a href="{{audio}}" target="_blank">
+            <p>Click on link to listen to audio</p>
+          </a>
+
+          {{/each}}
+
+   
         </div>
       </div>
     </div>

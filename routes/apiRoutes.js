@@ -109,8 +109,8 @@ module.exports = function (app) {
 
 
   app.get("/api/podcasts/:search?", async function (req, res) {
-    var userSearch = "#podcast-search";
-    console.log(userSearch);
+    // var userSearch = "#podcast-search";
+    // console.log(userSearch);
     const search = req.params.search || "game of thrones";
     const response = await unirest
       .get(
@@ -139,7 +139,7 @@ module.exports = function (app) {
     }
     console.log("nuestro objeto: ", obj) */;
     res.render("podcast", data);
-    window.location.href = "/podcasts";
+    
     /*    res = data;
      return; */
 
