@@ -1,18 +1,17 @@
 LillyPod app
 
-Easily access your podcast playlist by having a list of specific ones you've added to you podcast list.
+Easily access your podcast playlist by having a list of specific ones you've added to your podcast list.
 
-This app will provide access to favorite podcasts by allowing the user to choose from a provided list by type, genre, language,
-and length.
+This app will provide access to new and favorite podcasts by allowing the user to choose from a provided list by type, genre, language, host/author, and length.
 
-The user will get a list of available choices and they will be able to choose specific podcasts to add/delete their podcast playlist to listen later.
+The user will get a list of available choices and they will be able to choose specific podcasts to add/delete their podcast playlist. Listen immediately via the audio link or on your favorite podcatcher. 
 
+This app uses a Node and Express Web Server backed by a MySQL Database.
 
-Starting page should have your playlist available or ask to search/add from a dropdown-list of available options or allow them to search.
-Once choices are made, request from query will show up. You should be able to check which ones you would like to add. 
+This app queries the “Listen Notes” API using GET and POST routes for retrieving and adding new data.
 
-Make the submission and choices will be added to playlist.
-
+Users are authenticated via passport.authenticate Connect middleware.
 
 
-Project developed by Ashlie, Erin, Isidro, Marco
+
+Project developed by Isidro Quevedo, Erin Lyden, Marco Teti, and Ashlie Warren
