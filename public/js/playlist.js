@@ -137,4 +137,13 @@ $(document).ready(function() {
         });
     }
   });
+//     function createHTML(podcastData) {
+// var podTemplate = document.getElementById("podCast").innerHTML;
+// var compiledCast = Handlebars.compile(podTemplate);
+// var ourGeneratedHTML = compiledCast(podcastData);
+
+// var podContainer = document.getElementById("podCast");
+// podContainer.innerHTML = ourGeneratedHTML;
+//     }
+//   });
   
