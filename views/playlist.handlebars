@@ -48,27 +48,22 @@
         <div class="col-8 offset-2">
           <h1>{{msg}}</h1>
           <h2>LilyPods Playlists</h2>
+          <div id="podCast">
 
-          {{#each podcasts}}
+            {{#each podcasts}}
 
 
 
-          <h1>{{title}}</h1>
-          <h2>{{id}}</h2>
-          <img src="{{imageurl}}">
+            <h1>{{title}}</h1>
+            <h2>{{id}}</h2>
+            <img src="{{imageurl}}">
 
-          {{#each podcasts}}
+            {{#each podcasts}}
+          </div>
 
-          <h1>{{title}}</h1>
-          <h2>{{id}}</h2>
-          <img src="{{imageurl}}">
-          <a href="{{audio}}" target="_blank">
-            <p>Click on link to listen to audio</p>
-          </a>
 
-          {{/each}}
 
-   
+
         </div>
       </div>
     </div>

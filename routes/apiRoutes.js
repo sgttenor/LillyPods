@@ -111,10 +111,17 @@ module.exports = function (app) {
   app.get("/api/podcasts/:search?", async function (req, res) {
     // var userSearch = "#podcast-search";
     // console.log(userSearch);
-    const search = req.params.search || "game of thrones";
+    var search = req.params.search || "game of thrones";
+    search = search.replace(/ /g,"%20");
+    var test = search;
+    test = test.replace(/ /g,"%20");
+    console.log("new string search: ",test);
+
+    console.log("old string search:", search);
+
     const response = await unirest
       .get(
-        'https://listen-api.listennotes.com/api/v2/search?q=' + search + '&sort_by_date=1')
+        'https://listen-api.listennotes.com/api/v2/search?q=' + test + '&sort_by_date=1')
       .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
     // console.log("resultados : ", response);
     //    res.render("index", response);
@@ -138,7 +145,7 @@ module.exports = function (app) {
     {results: response.toJSON().body.results
     }
     console.log("nuestro objeto: ", obj) */;
-    res.render("podcast", data);
+    res.json(data);
     
     /*    res = data;
      return; */
@@ -147,11 +154,13 @@ module.exports = function (app) {
         results: response.toJSON().body.results
       }); */
   });
+
+
   app.get('/playlist', async function(req, res) {
     /* console.log("resultados: ", results) */
     const response = await unirest
     .get(
-      'https://listen-api.listennotes.com/api/v2/search?q=' + '&sort_by_date=1')
+      'https://listen-api.listennotes.com/api/v2/search?q='  + '&sort_by_date=1')
     .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
   // console.log("resultados : ", response);
   //    res.render("index", response);
@@ -161,7 +170,7 @@ module.exports = function (app) {
     podcasts: []
   };
     
-    res.render("podcast", data);
+    res.render("/playlist", data);
     });
 
     
