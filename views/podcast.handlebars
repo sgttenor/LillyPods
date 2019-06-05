@@ -7,13 +7,8 @@
     {{#each podcasts}}
     <div><img class="slick-img" src={{imageurl}}></div>
     {{/each}}
-    {{!-- <div><img class="slick-img" src="/images/podcast2.jpg"></div>
-      <div><img class="slick-img" src="/images/podcast3.jpg"></div>
-      <div><img class="slick-img" src="/images/podcast4.jpg"></div>
-      <div><img class="slick-img" src="/images/podcast5.jpg"></div> --}}
   </div>
   <br>
-  <a class="btn btn-primary btn-lg" href="/podcasts" role="button">Create Playlist</a>
   </p>
 </div>
 
@@ -31,7 +26,7 @@
               placeholder="Search by name, author, or genre...">
           </div>
           {{!-- <button id="submit" href="/api/podcasts/kittens" class="btn btn-primary float-right">Search</button> --}}
-          <a class="btn btn-primary btn-lg" id="searchButton" role="button">Search</a>
+          <a class="btn btn-success" id="searchButton" role="button">Search</a>
 
         </form>
 
@@ -44,7 +39,7 @@
             </p>
             <img src={{imageurl}} alt="image" height="200" width="150" class="image">
             {{#if ../isAuthenticated}}
-              <button data-podcast_id="{{id}}" data-image_url="{{imageurl}}" data-title="{{title}}" data-audio="{{audio}}"
+            <button data-podcast_id="{{id}}" data-image_url="{{imageurl}}" data-title="{{title}}" data-audio="{{audio}}"
               class="btn btn-danger float-right add">Add to play-list</button>
             {{/if}}
             <br><br>
@@ -59,53 +54,52 @@
       </div>
     </div>
   </div>
+</div>
 
-  <footer id="footer">Team IMEA | Copyright 2019</footer>
+<footer id="footer">Team IMEA | Copyright 2019</footer>
+<script type="text/javascript" src="/lib/slick/slick.min.js"></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
 
 
-    $(document).ready(function () {
-      $(".add").on("click", function (res, req) {
-        var data = $(this).data();
-        $.post("/api/playlist", data)
-          .then(function (data) {
-            console.log("posting data....." + data)
-          });
-      })
-
-      $("#searchButton").on("click", function () {
-        window.location.replace("/podcasts/" + $("#podcast-search").val().trim());
-      });
-
-      $('.your-class').slick({
-        centerMode: true,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        dots: true,
-        slidesToShow: 3,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 3
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 1
-            }
+  $(document).ready(function () {
+    $(".add").on("click", function (res, req) {
+      var data = $(this).data();
+      $.post("/api/playlist", data)
+        .then(function (data) {
+          console.log("posting data....." + data)
+        });
+    })
+    $("#searchButton").on("click", function () {
+      window.location.replace("/podcasts/" + $("#podcast-search").val().trim());
+    });
+    $('.your-class').slick({
+      centerMode: true,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      dots: true,
+      slidesToShow: 3,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
           }
-        ]
-      });
-
-    }); 
-  </script>
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  }); 
+</script>

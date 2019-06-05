@@ -19,6 +19,24 @@ module.exports = function (app) {
     res.render("login");
   })
 
+  app.get("/about", function(req, res) {
+    // console.log("login : ",req.user);
+    // if(req.user){
+    //   return res.redirect("/");
+    // }
+
+    res.render("about");
+  })
+
+  app.get("/playlist", function(req, res) {
+    console.log("test")
+    // console.log("login : ",req.user);
+    // if(req.user){
+    //   return res.redirect("/");
+    // }
+
+    res.render("playlist");
+  })
   // Load example page and pass in an example by id
   app.get("/podcast/:id", function (req, res) {
     db.Podcast.findOne({ where: { id: req.params.id } }).then(function (dbPodcast) {

@@ -8,6 +8,10 @@ var $exampleList = $("#example-list");
 
 
 
+
+
+
+
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getExamples().then(function(data) {

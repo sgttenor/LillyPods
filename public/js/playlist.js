@@ -136,7 +136,7 @@ $(document).ready(function() {
             req.params.search = "/podcasts";
         });
     }
-
+  });
 //     function createHTML(podcastData) {
 // var podTemplate = document.getElementById("podCast").innerHTML;
 // var compiledCast = Handlebars.compile(podTemplate);
