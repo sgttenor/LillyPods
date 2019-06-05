@@ -32,18 +32,18 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.get("/api/podcasts", async function(req, res) {
-  const response = await unirest
-  .get(
-      'https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=1')
-  .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
-  console.log(response.results);
-  console.log(response.rss);
-  res.json({
-      results : response.toJSON().body.results
-  });
+// app.get("/api/podcasts", async function(req, res) {
+//   const response = await unirest
+//   .get(
+//       'https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=1')
+//   .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
+//   console.log(response.results);
+//   console.log(response.rss);
+//   res.json({
+//       results : response.toJSON().body.results
+//   });
   
-});
+// });
 
 
 // Routes
@@ -57,9 +57,6 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
-
-
-
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
