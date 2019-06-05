@@ -56,7 +56,7 @@
       <div><img class="slick-img" src="/images/podcast5.jpg"></div> --}}
     </div>
     <br>
-    <a class="btn btn-primary btn-lg" href="podcasts" role="button">Create Playlist</a>
+    <a class="btn btn-primary btn-lg" href="/podcasts" role="button">Create Playlist</a>
     </p>
   </div>
 
@@ -74,10 +74,10 @@
                 placeholder="Search by name, author, or genre...">
             </div>
             {{!-- <button id="submit" href="/api/podcasts/kittens" class="btn btn-primary float-right">Search</button> --}}
-            <a class="btn btn-primary btn-lg" href="/api/podcasts" role="button">Search</a>
-           
+            <a class="btn btn-primary btn-lg" id="searchButton" role="button">Search</a>
+
           </form>
-          
+
           <h3>{{name}} Podcasts:</h3>
           <ul id="example-list" class="list-group">
             {{#each podcasts}}
@@ -86,7 +86,7 @@
               <p class="title">Podcast Title: <h1 class="header">{{title}}></h1>
               </p>
               <img src={{imageurl}} alt="image" height="200" width="150" class="image">
-              <button class="btn btn-danger float-right delete" id="delete">ｘ</button>
+              <button class="btn btn-danger float-right delete" id="add">Add to play-list</button>
               <br><br>
               <a href="{{audio}}" target="_blank">
                 <h6>
@@ -108,9 +108,14 @@
 
 
       $(document).ready(function () {
+        $("#add").on("click", function (res, req) {
+          console.log("you just added to your playlist");
+          window.location.replace("/playlist");
+        })
 
         $("#searchButton").on("click", function () {
-          window.location.replace("podcasts/" + $("#podcast-search").val().trim());
+          console.log("browser string : ", $("#podcast-search").val().trim());
+          window.location.replace("/podcasts/" + $("#podcast-search").val().trim());
         });
 
         $('.your-class').slick({

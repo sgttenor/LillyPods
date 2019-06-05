@@ -10,6 +10,7 @@ The user will get a list of available choices and they will be able to choose sp
 
 Starting page should have your playlist available or ask to search/add from a dropdown-list of available options or allow them to search.
 Once choices are made, request from query will show up. You should be able to check which ones you would like to add. 
+
 Make the submission and choices will be added to playlist.
 
 
