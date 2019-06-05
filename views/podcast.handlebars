@@ -33,12 +33,15 @@
         <h3>{{name}} Podcasts:</h3>
         <ul id="example-list" class="list-group">
           {{#each podcasts}}
-          <li data-id="{{did}}" class="list-group-item">
+          <li class="list-group-item">
             <p id="podId"></p>
             <p class="title">Podcast Title: <h1 class="header">{{title}}></h1>
             </p>
             <img src={{imageurl}} alt="image" height="200" width="150" class="image">
-            <button class="btn btn-danger float-right delete" id="add">Add to play-list</button>
+            {{#if ../isAuthenticated}}
+            <button data-podcast_id="{{id}}" data-image_url="{{imageurl}}" data-title="{{title}}" data-audio="{{audio}}"
+              class="btn btn-danger float-right add">Add to play-list</button>
+            {{/if}}
             <br><br>
             <a href="{{audio}}" target="_blank">
               <h6>
@@ -61,16 +64,16 @@
 
 
   $(document).ready(function () {
-    $("#add").on("click", function (res, req) {
-      console.log("you just added to your playlist");
-      window.location.replace("/playlist");
+    $(".add").on("click", function (res, req) {
+      var data = $(this).data();
+      $.post("/api/playlist", data)
+        .then(function (data) {
+          console.log("posting data....." + data)
+        });
     })
-
     $("#searchButton").on("click", function () {
-      console.log("browser string : ", $("#podcast-search").val().trim());
       window.location.replace("/podcasts/" + $("#podcast-search").val().trim());
     });
-
     $('.your-class').slick({
       centerMode: true,
       autoplay: true,
@@ -98,6 +101,5 @@
         }
       ]
     });
-
   }); 
 </script>

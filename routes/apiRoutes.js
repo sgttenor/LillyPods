@@ -70,21 +70,25 @@ module.exports = function (app) {
   });
 
 
-  app.get('api/playlist', async function(req, res) {
-    /* console.log("resultados: ", results) */
-    const response = await unirest
-    .get(
-      'https://listen-api.listennotes.com/api/v2/search?q='  + '&sort_by_date=1')
-    .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
-  // console.log("resultados : ", response);
-  //    res.render("index", response);
-  var results = response.toJSON().body.results;
-  /* console.log("resultados: ", results) */
-  var data = {
-    podcasts: []
-  };
-    
-    res.render("/playlist", data);
+  // app.get('/api/playlist', async function (req, res) {
+  //   /* console.log("resultados: ", results) */
+  //   const response = await unirest
+  //     .get(
+  //       'https://listen-api.listennotes.com/api/v2/search?q=' + '&sort_by_date=1')
+  //     .header('X-ListenAPI-Key', 'dbb72be8f67f44a1869d4db98e80bf90');
+  //   // console.log("resultados : ", response);
+  //   //    res.render("index", response);
+  //   var results = response.toJSON().body.results;
+  //   /* console.log("resultados: ", results) */
+  //   var data = {
+  //     podcasts: []
+  //   };
+
+  //   res.json()
+
+  // });
+
+
   app.post("/api/playlist", function (req, res) {
     const data = { ...req.body };
     data.UserId = req.user.id;
@@ -101,6 +105,6 @@ module.exports = function (app) {
     Podcast.updateOne(id, function () {
       res.redirect("/playlist");
     });
+
   });
-});
 }
