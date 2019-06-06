@@ -94,6 +94,7 @@ module.exports = function (app) {
     data.UserId = req.user.id;
     db.Podcast.create(data).then(function () {
       res.send("podcast added to playlist");
+      
     });
   });
 
