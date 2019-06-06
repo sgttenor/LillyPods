@@ -94,6 +94,7 @@ module.exports = function (app) {
     data.UserId = req.user.id;
     db.Podcast.create(data).then(function () {
       res.send("podcast added to playlist");
+      
     });
   });
 
@@ -106,5 +107,28 @@ module.exports = function (app) {
       res.redirect("/playlist");
     });
 
+  });
+
+  app.delete("/api/playlist/:id", function(req, res) {
+      db.Podcast.destroy({
+      where: {
+        id: req.params.podcast_id
+      }
+    })
+      .then(function(dbPodcast) {
+        res.json(dbPodcast);
+      });
+  });
+
+  app.put("/api/playlist", function(req, res) {
+      db.Podcast.update(id,
+      {
+        where: {
+         id: req.body.poid
+        }
+      })
+      .then(function(dbPodcast) {
+        res.json(dbPodcast);
+      });
   });
 }

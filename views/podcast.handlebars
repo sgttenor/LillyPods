@@ -69,6 +69,7 @@
       $.post("/api/playlist", data)
         .then(function (data) {
           console.log("posting data....." + data)
+          alert("Podcast successfully added to playlist");
         });
     })
     $("#searchButton").on("click", function () {

@@ -19,7 +19,7 @@ module.exports = function (app) {
     res.render("login");
   })
 
-  app.get("/about", function(req, res) {
+  app.get("/about", function (req, res) {
     // console.log("login : ",req.user);
     // if(req.user){
     //   return res.redirect("/");
@@ -28,14 +28,21 @@ module.exports = function (app) {
     res.render("about");
   })
 
-  app.get("/playlist", function(req, res) {
-    console.log("test")
-    // console.log("login : ",req.user);
-    // if(req.user){
-    //   return res.redirect("/");
-    // }
+  app.get("/playlist", function (req, res) {
+    if (req.user) {
+      db.Podcast.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      }).then(function (podcasts) {
+        res.render("playlist", {
+          podcasts: podcasts
+        });
+      })
+    } else {
 
-    res.render("playlist");
+      res.redirect("/");
+    }
   })
   // Load example page and pass in an example by id
   app.get("/podcast/:id", function (req, res) {
@@ -70,7 +77,7 @@ module.exports = function (app) {
         imageurl: currentPodcast.image
       })
     };
-    
+
     res.render("podcast", data);
   });
 
