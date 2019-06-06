@@ -107,4 +107,27 @@ module.exports = function (app) {
     });
 
   });
+
+  app.delete("/api/playlist/:id", function(req, res) {
+      db.Podcast.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbPodcast) {
+        res.json(dbPodcast);
+      });
+  });
+
+  app.put("/api/playlist", function(req, res) {
+      db.Podcast.update(id,
+      {
+        where: {
+         id: req.body.id
+        }
+      })
+      .then(function(dbPodcast) {
+        res.json(dbPodcast);
+      });
+  });
 }

@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <h1 class="text-center">Let's have a better day <em>(!)</em></h1>
+  <h1 class="text-center">Welcome to Your Playlist <em>(!)</em></h1>
+  <br><br>
   <div class="row text-center">
     {{#each podcasts}}
     <div class="col-sm-12 col-md-4">
@@ -7,9 +8,31 @@
         <h3>{{title}}</h3>
         <!-- <p>Please show me a Title</p> -->
         <figure><img src="{{image_url}}" alt="defaultphoto"></figure>
-        <a href="{{audio}}" class="btn btn-primary">Link!</a>
+        <a href="{{audio}}" class="btn btn-primary">Click to Play Audio</a>
+        <button class="btn btn-primary delete" data-id="{{this.id}}">Delete</button>
+        <br><br>
       </div>
     </div>
     {{/each}}
   </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function () {
+  $(".delete").on("click", function (event) {
+    var id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.ajax("/api/playlist/" + id, {
+      type: "DELETE"
+    }).then(
+      function () {
+        
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+})
+</script>
+

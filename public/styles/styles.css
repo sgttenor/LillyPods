@@ -40,3 +40,13 @@
     width: 50%;
   
 }
+b {
+  color: green;
+  font-weight: 1500;
+  font-size: 20px;
+}
+
+h1, h3, .lead {
+  text-align: center;
+  
+}
