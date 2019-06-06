@@ -9,7 +9,7 @@
         <!-- <p>Please show me a Title</p> -->
         <figure><img src="{{image_url}}" alt="defaultphoto"></figure>
         <a href="{{audio}}" class="btn btn-primary">Click to Play Audio</a>
-        <button class="btn btn-primary delete">Delete</button>
+        <button class="btn btn-primary delete" data-id="{{this.id}}">Delete</button>
         <br><br>
       </div>
     </div>
@@ -26,7 +26,7 @@ $(document).ready(function () {
       type: "DELETE"
     }).then(
       function () {
-        console.log("deleted podcast", id);
+        
         // Reload the page to get the updated list
         location.reload();
       }
